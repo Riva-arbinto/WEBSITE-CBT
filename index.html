@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBT Platform</title>
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #4e54c8, #8f94fb);
+      color: #fff;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1, h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .form-group input {
+      padding: 10px;
+      width: 100%;
+      font-size: 1.1em;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .question {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: linear-gradient(to bottom, #ffffff33, #ffffff11);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .question:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .question label {
+      display: block;
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    button {
+      display: inline-block;
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      background: rgba(0, 0, 0, 0.2);
+      font-size: 1em;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.8);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    footer a {
+      color: #ffdd57;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- Halaman Awal -->
+    <div class="container" id="welcomePage">
+      <h1>Selamat Datang di CBT Platform</h1>
+      <form id="userForm">
+        <div class="form-group">
+          <label for="name">Nama:</label>
+          <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+        </div>
+        <div class="form-group">
+          <label for="class">Kelas:</label>
+          <input type="text" id="class" name="class" placeholder="Masukkan kelas Anda" required>
+        </div>
+        <button type="submit">Mulai Ujian</button>
+      </form>
+    </div>
+
+    <!-- Halaman Soal -->
+    <div class="container hidden" id="examPage">
+      <h2>Soal CBT</h2>
+      <form id="examForm">
+        <div class="question">
+          <label>1. Ibu kota Indonesia adalah:</label>
+          <input type="radio" name="q1" value="Jakarta" required> Jakarta<br>
+          <input type="radio" name="q1" value="Bandung"> Bandung<br>
+          <input type="radio" name="q1" value="Surabaya"> Surabaya
+        </div>
+        <div class="question">
+          <label>2. Hasil dari 5 + 3 adalah:</label>
+          <input type="radio" name="q2" value="7" required> 7<br>
+          <input type="radio" name="q2" value="8"> 8<br>
+          <input type="radio" name="q2" value="9"> 9
+        </div>
+        <button type="submit">Kirim Jawaban</button>
+      </form>
+    </div>
+
+    <!-- Halaman Akhir -->
+    <div class="container hidden" id="thankYouPage">
+      <h1>Terima Kasih!</h1>
+      <p>Jawaban Anda telah terkirim dengan baik.</p>
+      <p>Semoga sukses!</p>
+    </div>
+  </main>
+
+  <footer>
+    By <a href="#">Riva Vabian.A</a>
+  </footer>
+
+  <script>
+    const userForm = document.getElementById('userForm');
+    const welcomePage = document.getElementById('welcomePage');
+    const examPage = document.getElementById('examPage');
+    const thankYouPage = document.getElementById('thankYouPage');
+    const examForm = document.getElementById('examForm');
+
+    // Navigasi dari halaman awal ke halaman soal
+    userForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      welcomePage.classList.add('hidden');
+      examPage.classList.remove('hidden');
+    });
+
+    // Navigasi dari halaman soal ke halaman akhir
+    examForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      examPage.classList.add('hidden');
+      thankYouPage.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
